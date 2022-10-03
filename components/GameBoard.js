@@ -114,8 +114,9 @@ export default function GameBoard() {
             setStatus('Game over. All points selected')
             if (bonusStatus == true) {
                 let newTotal = total + total * BONUS_MULTIPLIER
+                setStatus('Well done! You got a bonus, so enjoy your little multiplier of ' + BONUS_MULTIPLIER)
                 setTotal(newTotal)
-                setStatus('Well done! You got a bonus, your final points are ' + total + ' ' + BONUS_MULTIPLIER + ' * ' + total + ' = ' + newTotal)
+                return newTotal.toFixed(2)
             }
             setNbrOfThrowsLeft(0)
             setButtonText('Start a new game')
