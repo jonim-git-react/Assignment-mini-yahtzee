@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { useFonts } from 'expo-font'
 import Header from "./components/Header"
 import GameBoard from "./components/GameBoard";
-import Gameboard2 from "./components/Gameboard2";
 import Footer from "./components/Footer"
 import styles from './style/style'
 
