@@ -8,7 +8,7 @@ import { Col, Grid } from 'react-native-easy-grid'
 let board = [];
 const NBR_OF_DICES = 5;
 const NBR_OF_THROWS = 3;
-const BONUS_MULTIPLIER = 0.1;
+const BONUS = 35;
 const NBRS = [
     { value: 1 },
     { value: 2 },
@@ -74,13 +74,11 @@ export default function GameBoard() {
                 sum1 = sum1 + values[j]
             }
         }
-
         dicePoints[i] = sum1
         setSelectedDicesPoints(points)
         setSum(dicePoints)
         let sumDicePoints = dicePoints.reduce((a, b) => a + b, 0)
-        setTotal
-            (sumDicePoints)
+        setTotal(sumDicePoints)
         setBonusPoints(63 - sumDicePoints)
         setSelectedDices(new Array(6).fill(false))
         setNbrOfThrowsLeft(3)
@@ -113,10 +111,10 @@ export default function GameBoard() {
         if (selectedDicesPoints.every(value => value === true)) {
             setStatus('Game over. All points selected')
             if (bonusStatus == true) {
-                let newTotal = total + total * BONUS_MULTIPLIER
-                setStatus('Well done! You got a bonus, so enjoy your little multiplier of ' + BONUS_MULTIPLIER)
+                let newTotal = total + BONUS
+                setStatus('Well done! You got a bonus, so enjoy your extra ' + BONUS + ' bonus points')
                 setTotal(newTotal)
-                return newTotal.toFixed(2)
+                return newTotal
             }
             setNbrOfThrowsLeft(0)
             setButtonText('Start a new game')
